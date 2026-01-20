@@ -22,7 +22,7 @@ This project implements a fully pipelined FIR filter optimized for FPGA deployme
    - Stage 5: 8 → 4 sums (34-bit)
    - Stage 6: 4 → 2 sums (35-bit)
    - Stage 7: Final accumulation (36-bit Q6.30)
-5. **Scaling & Saturation** - Q6.30 → Q6.15 conversion with overflow protection
+5. **Scaling & Saturation** - Q6.30 → Q1.15 conversion with overflow protection
 
 ### Filter Characteristics
 - **Type:** Low-pass symmetric FIR
