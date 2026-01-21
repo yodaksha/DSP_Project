@@ -125,12 +125,12 @@ reg [7:0] check_delay;
 always @(posedge clk) begin
     if (rst)
         check_delay <= 0;
-    else if (check_delay < DUT_LATENCY + 2)
+    else if (check_delay < DUT_LATENCY )
         check_delay <= check_delay + 1;
 end
 
 always @(posedge clk) begin
-    if (!rst && check_delay >= DUT_LATENCY + 2) begin
+    if (!rst && check_delay >= DUT_LATENCY ) begin
         if (y_out !== y_ref_pipe[REF_DELAY-1]) begin
             $display("❌ MISMATCH @ %0t | DUT=%d REF=%d",
                      $time, y_out, y_ref_pipe[REF_DELAY-1]);
