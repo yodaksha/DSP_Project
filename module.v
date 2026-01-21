@@ -11,7 +11,7 @@ module fir_16tap #
 
 integer i;
 
-/* ---------------- Input Register ---------------- */
+//Input Register 
 reg signed [15:0] x_reg;
 
 always @(posedge clk) begin
@@ -21,7 +21,7 @@ always @(posedge clk) begin
         x_reg <= x_in;
 end
 
-/* ---------------- Shift Register ---------------- */
+// Shift Register 
 reg signed [15:0] x_shift [0:N-1];
 
 always @(posedge clk) begin
@@ -35,7 +35,7 @@ always @(posedge clk) begin
     end
 end
 
-/* ---------------- Coefficients (Q1.15) ---------------- */
+// Coefficients (Q1.15) 
 reg signed [15:0] coeff [0:N-1];
 
 initial begin
@@ -57,7 +57,7 @@ initial begin
     coeff[15] = 16'sd4;
 end
 
-/* ---------------- Multipliers ---------------- */
+// Multipliers 
 reg signed [31:0] mult_out [0:N-1];  // Q2.30
 
 always @(posedge clk) begin
@@ -70,7 +70,7 @@ always @(posedge clk) begin
     end
 end
 
-/* ---------------- Adder Tree ---------------- */
+// Adder Tree 
 reg signed [32:0] sum1 [0:7];
 reg signed [33:0] sum2 [0:3];
 reg signed [34:0] sum3 [0:1];
@@ -107,7 +107,7 @@ always @(posedge clk) begin
         acc <= sum3[0] + sum3[1];
 end
 
-/* ---------------- Scaling & Saturation ---------------- */
+//Scaling & Saturation
 wire signed [20:0] scaled;
 assign scaled = acc >>> 15;   // Q6.15
 
