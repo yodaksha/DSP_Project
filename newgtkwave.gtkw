@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Fri Jan 23 18:50:39 2026
+[*]
+[dumpfile] "C:\Users\Tannu Panwar\Downloads\DSP_Project-main\DSP_Project-main\dump.vcd"
+[dumpfile_mtime] "Fri Jan 23 18:46:54 2026"
+[dumpfile_size] 67466
+[savefile] "C:\Users\Tannu Panwar\Downloads\DSP_Project-main\DSP_Project-main\newgtkwave.gtkw"
+[timestart] 387700
+[size] 1536 793
+[pos] -87 -87
+*-16.000000 578700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 283
+[sst_expanded] 1
+[sst_vpaned_height] 221
+@420
+ntb_fir_16tap.DUT_LATENCY
+ntb_fir_16tap.N
+ntb_fir_16tap.REF_DELAY
+@22
+ntb_fir_16tap.acc_ref[35:0]
+ntb_fir_16tap.check_delay[7:0]
+@28
+ntb_fir_16tap.clk
+ntb_fir_16tap.enable
+@420
+ntb_fir_16tap.i
+@22
+ntb_fir_16tap.mismatch_count[31:0]
+@28
+ntb_fir_16tap.rst
+@22
+ntb_fir_16tap.sample_count[31:0]
+ntb_fir_16tap.saturation_count[31:0]
+ntb_fir_16tap.scaled_monitor[20:0]
+ntb_fir_16tap.test_count[31:0]
+ntb_fir_16tap.x_in[15:0]
+ntb_fir_16tap.x_reg_ref[15:0]
+ntb_fir_16tap.y_out[15:0]
+@23
+ntb_fir_16tap.y_ref[15:0]
+[pattern_trace] 1
+[pattern_trace] 0
