@@ -73,12 +73,12 @@ always @(*) begin
 end
 
 always @(*) begin
-    if ((acc_ref >>> 15) > 32767)
+    if (((acc_ref + 36'sd16384) >>> 15) > 32767)
         y_ref = 32767;
-    else if ((acc_ref >>> 15) < -32768)
+    else if (((acc_ref + 36'sd16384) >>> 15) < -32768)
         y_ref = -32768;
     else
-        y_ref = acc_ref >>> 15;
+        y_ref = (acc_ref + 36'sd16384) >>> 15;
 end
 
 // Reference Output Pipeline

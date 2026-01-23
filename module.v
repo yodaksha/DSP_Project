@@ -107,9 +107,9 @@ always @(posedge clk) begin
         acc <= sum3[0] + sum3[1];
 end
 
-//Scaling & Saturation
+//Scaling & Saturation (with rounding)
 wire signed [20:0] scaled;
-assign scaled = acc >>> 15;   // Q6.15
+assign scaled = (acc + 36'sd16384) >>> 15;   // Q6.15, add 2^14 for rounding
 
 always @(posedge clk) begin
     if (rst)
