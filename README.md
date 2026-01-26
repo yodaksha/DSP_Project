@@ -325,7 +325,7 @@ MIT License - Free to use, modify, and distribute.
 
 **Yodaksha Apratim Singh**  
 GitHub: [@yodaksha](https://github.com/yodaksha)
-- **Tanu Panwar** 
+- **Tannu Panwar** 
 - **Isha Bhadauria**
 - **Mishra Saurabh**
 
