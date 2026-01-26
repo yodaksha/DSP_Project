@@ -3,8 +3,8 @@
 module tb_fir_16tap;
 
 parameter N            = 16;
-parameter DUT_LATENCY  = 9;    // DUT architectural pipeline stages  
-parameter REF_DELAY    = 7;    // Reference output pipeline depth for alignment
+parameter DUT_LATENCY  = 9;    
+parameter REF_DELAY    = 7;    
 
 reg clk;
 reg rst;
@@ -39,7 +39,7 @@ initial begin
     coeff[12]=512; coeff[13]=256; coeff[14]=128;  coeff[15]=64;
 end
 
-//Reference Input Register with enable
+// Input Register with enable
 reg signed [15:0] x_reg_ref;
 
 always @(posedge clk) begin
@@ -49,7 +49,7 @@ always @(posedge clk) begin
         x_reg_ref <= x_in;
 end
 
-//Reference Shift Register with enable
+// Shift Register 
 reg signed [15:0] x_hist [0:N-1];
 integer i;
 
@@ -83,7 +83,7 @@ always @(*) begin
         y_ref = (acc_ref + 36'sd16384) >>> 15;
 end
 
-// Reference Output Pipeline with enable
+// Output Pipeline 
 reg signed [15:0] y_ref_pipe [0:REF_DELAY-1];
 
 always @(posedge clk) begin
@@ -210,9 +210,9 @@ initial begin
     enable = 0;  // Disable filter
     repeat (10) begin
         @(posedge clk);
-        x_in = $random;  // Input changes but filter shouldn't process
+        x_in = $random;  
     end
-    enable = 1;  // Re-enable
+    enable = 1; 
     @(posedge clk);
     x_in = 0;
     repeat (20) @(posedge clk);
@@ -225,7 +225,7 @@ initial begin
         x_in = 0;
     end
     
-    // Print Statistics
+    
     #100;
     $display("\n========== TEST STATISTICS ==========");
     $display("Total Tests Run:       %0d", test_count);
@@ -258,7 +258,7 @@ always @(posedge clk) begin
             mismatch_count <= mismatch_count + 1;
             $display("❌ MISMATCH @ %0t | DUT=%d REF=%d",
                      $time, y_out, y_ref_pipe[REF_DELAY-1]);
-        end else if (enable) begin  // Only display when processing
+        end else if (enable) begin  
             $display("✅ OK @ %0t | y=%d", $time, y_out);
         end
     end
@@ -267,7 +267,7 @@ end
 // Assertions for runtime checking
 always @(posedge clk) begin
     if (!rst && enable) begin
-        // Check output is within valid range
+        
         if (y_out > 16'sd32767 || y_out < -16'sd32768) begin
             $display("⚠️  WARNING @ %0t: Output out of range: %d", $time, y_out);
         end

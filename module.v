@@ -1,22 +1,22 @@
 module fir_16tap #
 (
-    parameter N = 16,              // Number of taps (must be power of 2)
-    parameter COEFF_WIDTH = 16,    // Coefficient bit width
-    parameter DATA_WIDTH = 16      // Data bit width
+    parameter N = 16,             
+    parameter COEFF_WIDTH = 16,    
+    parameter DATA_WIDTH = 16      
 )
 (
     input  wire              clk,
     input  wire              rst,
-    input  wire              enable,   // Clock gating for power savings
-    input  wire signed [DATA_WIDTH-1:0] x_in,   // Q1.15
-    output reg  signed [DATA_WIDTH-1:0] y_out   // Q1.15
+    input  wire              enable,   // Clock gating 
+    input  wire signed [DATA_WIDTH-1:0] x_in,   
+    output reg  signed [DATA_WIDTH-1:0] y_out   
 );
 
 integer i;
 localparam HALF_N = N/2;
 localparam ACC_WIDTH = DATA_WIDTH + COEFF_WIDTH + $clog2(N);
 
-//Input Register with clock gating
+//Input Register
 reg signed [DATA_WIDTH-1:0] x_reg;
 
 always @(posedge clk) begin
@@ -26,7 +26,7 @@ always @(posedge clk) begin
         x_reg <= x_in;
 end
 
-// Shift Register with clock gating
+// Shift Register 
 reg signed [DATA_WIDTH-1:0] x_shift [0:N-1];
 
 always @(posedge clk) begin
@@ -41,7 +41,7 @@ always @(posedge clk) begin
 end
 
 
-// Pre-adders for symmetric FIR with clock gating
+// Pre-adders 
 reg signed [DATA_WIDTH:0] pre_add [0:HALF_N-1];  
 
 always @(posedge clk) begin
@@ -54,8 +54,8 @@ always @(posedge clk) begin
     end
 end
 
-// Bit Shifts with clock gating 
-localparam BASE_SHIFT = 6;  // For Q1.15 coefficients, base shift is 6 (2^(15-9)=64)
+// Bit Shifts 
+localparam BASE_SHIFT = 6;  
 reg signed [ACC_WIDTH-1:0] shift_out [0:HALF_N-1];
 
 always @(posedge clk) begin
@@ -104,11 +104,11 @@ endgenerate
 wire signed [ACC_WIDTH-1:0] acc;
 assign acc = adder_tree[NUM_STAGES][0];
 
-//Scaling & Saturation (with rounding) - Parameterized
-localparam SCALE_SHIFT = COEFF_WIDTH - 1;  // For Q1.15: shift by 15
+//Scaling & Saturation
+localparam SCALE_SHIFT = COEFF_WIDTH - 1;  
 localparam SCALED_WIDTH = ACC_WIDTH - SCALE_SHIFT + 1;
 wire signed [SCALED_WIDTH-1:0] scaled;
-assign scaled = (acc + (1 << (SCALE_SHIFT-1))) >>> SCALE_SHIFT;   // Add 2^14 for rounding
+assign scaled = (acc + (1 << (SCALE_SHIFT-1))) >>> SCALE_SHIFT;  
 
 localparam MAX_POS = (1 << (DATA_WIDTH-1)) - 1;    // 32767 for 16-bit
 localparam MAX_NEG = -(1 << (DATA_WIDTH-1));        // -32768 for 16-bit
