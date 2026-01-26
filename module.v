@@ -1,13 +1,13 @@
-module fir_16tap #
+module nfir_16tap #
 (
-    parameter N = 16,              // Number of taps (must be power of 2)
+    parameter N = 16,              
     parameter COEFF_WIDTH = 16,    // Coefficient bit width
     parameter DATA_WIDTH = 16      // Data bit width
 )
 (
     input  wire              clk,
     input  wire              rst,
-    input  wire              enable,   // Clock gating for power savings
+    input  wire              enable,   
     input  wire signed [DATA_WIDTH-1:0] x_in,   // Q1.15
     output reg  signed [DATA_WIDTH-1:0] y_out   // Q1.15
 );
@@ -16,7 +16,7 @@ integer i;
 localparam HALF_N = N/2;
 localparam ACC_WIDTH = DATA_WIDTH + COEFF_WIDTH + $clog2(N);
 
-//Input Register with clock gating
+//Input Register 
 reg signed [DATA_WIDTH-1:0] x_reg;
 
 always @(posedge clk) begin
@@ -26,7 +26,7 @@ always @(posedge clk) begin
         x_reg <= x_in;
 end
 
-// Shift Register with clock gating
+// Shift Register
 reg signed [DATA_WIDTH-1:0] x_shift [0:N-1];
 
 always @(posedge clk) begin
@@ -41,7 +41,7 @@ always @(posedge clk) begin
 end
 
 
-// Pre-adders for symmetric FIR with clock gating
+// Pre-adders for symmetric FIR 
 reg signed [DATA_WIDTH:0] pre_add [0:HALF_N-1];  
 
 always @(posedge clk) begin
@@ -68,7 +68,8 @@ always @(posedge clk) begin
     end
 end
 
-// Parameterized Adder Tree using generate blocks
+
+// Parameterized Adder Tree 
 
 localparam NUM_STAGES = $clog2(HALF_N);  
 
@@ -88,7 +89,7 @@ generate
     
     // Subsequent stages: binary tree addition
     for (stage = 1; stage <= NUM_STAGES; stage = stage + 1) begin : adder_stages
-        localparam STAGE_SIZE = HALF_N >> stage;  // Number of adders in this stage
+        localparam STAGE_SIZE = HALF_N >> stage;           // Number of adders in this stage
         for (idx = 0; idx < STAGE_SIZE; idx = idx + 1) begin : adder_level
             always @(posedge clk) begin
                 if (rst)
@@ -104,11 +105,11 @@ endgenerate
 wire signed [ACC_WIDTH-1:0] acc;
 assign acc = adder_tree[NUM_STAGES][0];
 
-//Scaling & Saturation (with rounding) - Parameterized
-localparam SCALE_SHIFT = COEFF_WIDTH - 1;  // For Q1.15: shift by 15
+//Scaling & Saturation (with rounding)
+localparam SCALE_SHIFT = COEFF_WIDTH - 1;  
 localparam SCALED_WIDTH = ACC_WIDTH - SCALE_SHIFT + 1;
 wire signed [SCALED_WIDTH-1:0] scaled;
-assign scaled = (acc + (1 << (SCALE_SHIFT-1))) >>> SCALE_SHIFT;   // Add 2^14 for rounding
+assign scaled = (acc + (1 << (SCALE_SHIFT-1))) >>> SCALE_SHIFT;   
 
 localparam MAX_POS = (1 << (DATA_WIDTH-1)) - 1;    // 32767 for 16-bit
 localparam MAX_NEG = -(1 << (DATA_WIDTH-1));        // -32768 for 16-bit
