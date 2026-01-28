@@ -321,10 +321,13 @@ Clock Gated:        0 DSP + power management     = 0 DSP blocks  (+ 40-60% power
 
 MIT License - Free to use, modify, and distribute.
 
-## Author
+## Contributers
 
-**Yodaksha**  
+**Yodaksha Apratim Singh**  
 GitHub: [@yodaksha](https://github.com/yodaksha)
+- **Tanu Panwar** 
+- **Isha Bhadauria**
+- **Mishra Saurabh**
 
 ## References
 
