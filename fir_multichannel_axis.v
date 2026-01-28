@@ -41,7 +41,7 @@ module fir_multichannel_axis #(
 // Parameter Calculations
 localparam HALF_N = N_TAPS/2;
 localparam ACC_WIDTH = DATA_WIDTH + COEFF_WIDTH + $clog2(N_TAPS);
-localparam LATENCY = 9;  
+localparam LATENCY = 11;  
 
 integer i, ch;
 
@@ -49,27 +49,26 @@ integer i, ch;
 // Coefficient Memory
 reg signed [COEFF_WIDTH-1:0] coeff_mem [0:HALF_N-1];
 
-// Default power-of-2 coefficients (32-tap CSD encoding)
+// Coefficients 
 initial begin
-    coeff_mem[0]  = 16'sd32;     // 2^5
-    coeff_mem[1]  = 16'sd64;     // 2^6
-    coeff_mem[2]  = 16'sd128;    // 2^7
-    coeff_mem[3]  = 16'sd256;    // 2^8
-    coeff_mem[4]  = 16'sd512;    // 2^9
-    coeff_mem[5]  = 16'sd1024;   // 2^10
-    coeff_mem[6]  = 16'sd2048;   // 2^11
-    coeff_mem[7]  = 16'sd4096;   // 2^12
-    coeff_mem[8]  = 16'sd8192;   // 2^13
-    coeff_mem[9]  = 16'sd8192;   // 2^13
-    coeff_mem[10] = 16'sd4096;   // 2^12
-    coeff_mem[11] = 16'sd2048;   // 2^11
-    coeff_mem[12] = 16'sd1024;   // 2^10
-    coeff_mem[13] = 16'sd512;    // 2^9
-    coeff_mem[14] = 16'sd256;    // 2^8
-    coeff_mem[15] = 16'sd128;    // 2^7
+    coeff_mem[0]  = 16'sd16;     
+    coeff_mem[1]  = 16'sd32;     
+    coeff_mem[2]  = 16'sd64;     
+    coeff_mem[3]  = 16'sd128;    
+    coeff_mem[4]  = 16'sd256;    
+    coeff_mem[5]  = 16'sd512;    
+    coeff_mem[6]  = 16'sd1024;   
+    coeff_mem[7]  = 16'sd2048;   
+    coeff_mem[8]  = 16'sd4096;   
+    coeff_mem[9]  = 16'sd8192;   
+    coeff_mem[10] = 16'sd16384;  
+    coeff_mem[11] = 16'sd32767;  
+    coeff_mem[12] = 16'sd32767;  
+    coeff_mem[13] = 16'sd16384;  
+    coeff_mem[14] = 16'sd8192;   
+    coeff_mem[15] = 16'sd4096;   
 end
 
-// Coefficient write port
 always @(posedge aclk) begin
     if (coeff_wr_en)
         coeff_mem[coeff_wr_addr] <= coeff_wr_data;
@@ -81,14 +80,14 @@ assign s_axis_tready = s_ready_reg;
 
 wire input_transfer = s_axis_tvalid && s_axis_tready;
 
-// Per-Channel Shift Registers (Key Multi-Channel Feature!)
+// Per-Channel Shift Registers 
 reg signed [DATA_WIDTH-1:0] channel_shift [0:N_CHANNELS-1][0:N_TAPS-1];
 
-// Current processing channel and metadata
+// Current processing channel 
 reg [TID_WIDTH-1:0] current_tid;
 reg current_tlast;
 
-// Update shift register for the active channel
+//shift register for the active channel
 always @(posedge aclk) begin
     if (!aresetn) begin
         for (ch = 0; ch < N_CHANNELS; ch = ch + 1)
@@ -114,7 +113,7 @@ always @(posedge aclk) begin
 end
 
 
-// Symmetric FIR: Pre-adders (Shared Across Channels)
+// Symmetric FIR: Pre-adders 
 
 reg signed [DATA_WIDTH:0] pre_add [0:HALF_N-1];
 
@@ -133,32 +132,47 @@ end
 // Multiplication Stage 
 reg signed [ACC_WIDTH-1:0] mult_out [0:HALF_N-1];
 
-// 
-function integer log2;
-    input integer value;
-    integer temp;
-    begin
-        temp = value;
-        log2 = 0;
-        while (temp > 1) begin
-            temp = temp >> 1;
-            log2 = log2 + 1;
-        end
-    end
-endfunction
+// Precomputed shift amounts for power-of-2 coefficients
+localparam [4:0] SHIFT_0  = 4;   // 16 = 2^4
+localparam [4:0] SHIFT_1  = 5;   // 32 = 2^5
+localparam [4:0] SHIFT_2  = 6;   // 64 = 2^6
+localparam [4:0] SHIFT_3  = 7;   // 128 = 2^7
+localparam [4:0] SHIFT_4  = 8;   // 256 = 2^8
+localparam [4:0] SHIFT_5  = 9;   // 512 = 2^9
+localparam [4:0] SHIFT_6  = 10;  // 1024 = 2^10
+localparam [4:0] SHIFT_7  = 11;  // 2048 = 2^11
+localparam [4:0] SHIFT_8  = 12;  // 4096 = 2^12
+localparam [4:0] SHIFT_9  = 13;  // 8192 = 2^13
+localparam [4:0] SHIFT_10 = 14;  // 16384 = 2^14
+localparam [4:0] SHIFT_13 = 14;  // 16384 = 2^14
+localparam [4:0] SHIFT_14 = 13;  // 8192 = 2^13
+localparam [4:0] SHIFT_15 = 12;  // 4096 = 2^12
+
+localparam USE_MULT_11 = 1'b1;  // 32767
+localparam USE_MULT_12 = 1'b1;  // 32767
 
 always @(posedge aclk) begin
     if (!aresetn) begin
         for (i = 0; i < HALF_N; i = i + 1)
             mult_out[i] <= 0;
     end else if (input_transfer) begin
-        for (i = 0; i < HALF_N; i = i + 1) begin
-            // CSD optimization: detect power-of-2 coefficients
-            if ((coeff_mem[i] & (coeff_mem[i] - 1)) == 0 && coeff_mem[i] != 0)
-                mult_out[i] <= pre_add[i] <<< log2(coeff_mem[i]);
-            else
-                mult_out[i] <= pre_add[i] * coeff_mem[i];
-        end
+        // Optimized multiplication using precomputed shift amounts
+        mult_out[0]  <= pre_add[0]  <<< SHIFT_0;
+        mult_out[1]  <= pre_add[1]  <<< SHIFT_1;
+        mult_out[2]  <= pre_add[2]  <<< SHIFT_2;
+        mult_out[3]  <= pre_add[3]  <<< SHIFT_3;
+        mult_out[4]  <= pre_add[4]  <<< SHIFT_4;
+        mult_out[5]  <= pre_add[5]  <<< SHIFT_5;
+        mult_out[6]  <= pre_add[6]  <<< SHIFT_6;
+        mult_out[7]  <= pre_add[7]  <<< SHIFT_7;
+        mult_out[8]  <= pre_add[8]  <<< SHIFT_8;
+        mult_out[9]  <= pre_add[9]  <<< SHIFT_9;
+        mult_out[10] <= pre_add[10] <<< SHIFT_10;
+        mult_out[11] <= pre_add[11] * coeff_mem[11];  // 32767 requires multiplier
+        mult_out[12] <= pre_add[12] * coeff_mem[12];  // 32767 requires multiplier
+        mult_out[13] <= pre_add[13] <<< SHIFT_13;
+        mult_out[14] <= pre_add[14] <<< SHIFT_14;
+        mult_out[15] <= pre_add[15] <<< SHIFT_15;
     end
 end
 
