@@ -6,24 +6,24 @@ Production-ready **4-channel time-multiplexed FIR filter** with industry-standar
 
 ## Key Features
 
-### ✅ Multi-Channel Architecture
+###  Multi-Channel Architecture
 - **4 independent channels** with isolated filter states
 - **TID-based routing** (2-bit channel ID in AXI-Stream)
 - **Per-channel shift registers** (maintains independent history)
 - **Shared adder tree** (70% resource savings vs parallel)
 
-### ✅ Time-Multiplexed Processing
+###  Time-Multiplexed Processing
 - **ONE filter core** processes all 4 channels sequentially
 - **Automatic channel switching** via AXI-Stream TID
 - **30% overhead** vs single-channel (87% savings vs 4× parallel!)
 
-### ✅ AXI-Stream with TID Support
+###  AXI-Stream with TID Support
 - Full handshaking (tvalid/tready/tlast)
 - Channel identification (s_axis_tid / m_axis_tid)
 - Per-channel frame boundaries
 - Automatic channel synchronization
 
-### ✅ Production Features
+###  Production Features
 - Configurable coefficients (runtime updates)
 - Bypass mode per channel
 - Per-channel overflow detection
@@ -177,16 +177,16 @@ output [31:0] sample_count   // Total samples processed
 
 The testbench validates:
 
-1. ✅ **Single Channel Operation** - TID=0 only, verify isolation
-2. ✅ **Channel Isolation** - Independent impulse responses per channel
-3. ✅ **Stereo Audio** - Left/right channel simulation
-4. ✅ **Quad Sensor Array** - 4 simultaneous sensor streams
-5. ✅ **Round-Robin Scheduling** - Fair channel access
-6. ✅ **Backpressure Handling** - Multi-channel flow control
-7. ✅ **Per-Channel TLAST** - Frame boundaries per channel
-8. ✅ **Mixed Rate Channels** - Different sample rates per channel
-9. ✅ **Runtime Coefficient Update** - Reconfiguration during operation
-10. ✅ **Per-Channel Overflow** - Independent saturation detection
+1.  **Single Channel Operation** - TID=0 only, verify isolation
+2.  **Channel Isolation** - Independent impulse responses per channel
+3.  **Stereo Audio** - Left/right channel simulation
+4.  **Quad Sensor Array** - 4 simultaneous sensor streams
+5.  **Round-Robin Scheduling** - Fair channel access
+6.  **Backpressure Handling** - Multi-channel flow control
+7.  **Per-Channel TLAST** - Frame boundaries per channel
+8.  **Mixed Rate Channels** - Different sample rates per channel
+9.  **Runtime Coefficient Update** - Reconfiguration during operation
+10.  **Per-Channel Overflow** - Independent saturation detection
 
 ---
 
