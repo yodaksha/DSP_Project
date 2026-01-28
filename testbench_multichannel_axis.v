@@ -215,9 +215,9 @@ initial begin
     $display("  Left (Ch0) samples: %0d", ch0_count);
     $display("  Right (Ch1) samples: %0d", ch1_count);
     
-    // ====================================================
+    
     // TEST 4: Quad Sensor Array
-    // ====================================================
+    
     test_num = 4;
     $display("\n[TEST %0d] Quad Sensor Array (4 Vibration Sensors)", test_num);
     
@@ -238,9 +238,9 @@ initial begin
     $display("  All 4 sensor channels processed");
     $display("  Total samples: %0d", sample_count);
     
-    // ====================================================
+   
     // TEST 5: Round-Robin Scheduling
-    // ====================================================
+  
     test_num = 5;
     $display("\n[TEST %0d] Round-Robin Channel Scheduling", test_num);
     
