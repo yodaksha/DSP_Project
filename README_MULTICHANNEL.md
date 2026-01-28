@@ -213,85 +213,6 @@ Look for `s_axis_tid` and `m_axis_tid` signals to see channel routing!
 
 ---
 
-## Integration Examples
-
-### Example 1: Stereo I2S Audio
-```verilog
-// I2S receiver outputs left/right with TID
-fir_multichannel_axis stereo_filter (
-    .aclk(audio_clk),
-    .aresetn(~rst),
-    
-    // From I2S receiver
-    .s_axis_tvalid(i2s_valid),
-    .s_axis_tready(i2s_ready),
-    .s_axis_tdata(i2s_data),
-    .s_axis_tid(i2s_channel),  // 0=Left, 1=Right
-    .s_axis_tlast(1'b0),
-    
-    // To DAC
-    .m_axis_tvalid(dac_valid),
-    .m_axis_tready(dac_ready),
-    .m_axis_tdata(filtered_audio),
-    .m_axis_tid(dac_channel),
-    
-    // Static configuration
-    .coeff_wr_en(1'b0),
-    .bypass_mode(1'b0),
-    .overflow_flag(audio_overflow)
-);
-```
-
-### Example 2: Sensor Hub with DMA
-```verilog
-// 4 ADC channels → Filter → DMA → Memory
-
-// ADC mux assigns TID automatically
-assign s_axis_tid = adc_channel_select;  // 0-3
-
-fir_multichannel_axis sensor_filter (
-    .aclk(sys_clk),
-    .aresetn(~sys_rst),
-    
-    // From ADC controller
-    .s_axis_tvalid(adc_valid),
-    .s_axis_tdata(adc_data),
-    .s_axis_tid(adc_channel_select),
-    
-    // To AXI DMA
-    .m_axis_tvalid(dma_tvalid),
-    .m_axis_tready(dma_tready),
-    .m_axis_tdata(filtered_sensor_data),
-    .m_axis_tid(dma_channel_id)  // DMA uses this to route to correct buffer
-);
-```
-
-### Example 3: ARM Cortex-M Control
-```c
-// ARM software to configure filter
-
-// Update filter coefficients
-void update_filter_coefficients(uint16_t *coeff, int count) {
-    for (int i = 0; i < count; i++) {
-        *FILTER_COEFF_ADDR_REG = i;
-        *FILTER_COEFF_DATA_REG = coeff[i];
-        *FILTER_COEFF_WR_REG = 1;
-        usleep(1);
-        *FILTER_COEFF_WR_REG = 0;
-    }
-}
-
-// Check per-channel overflow
-uint8_t check_channel_overflow(int channel) {
-    uint32_t overflow_flags = *FILTER_OVERFLOW_REG;
-    return (overflow_flags >> channel) & 0x1;
-}
-
-// Get sample count
-uint32_t get_sample_count(void) {
-    return *FILTER_SAMPLE_COUNT_REG;
-}
-```
 
 ---
 
@@ -325,54 +246,7 @@ uint32_t get_sample_count(void) {
 
 ---
 
-## Advanced Features
-
-### Per-Channel Coefficient Sets (Future Enhancement)
-```verilog
-// Different coefficients per channel
-// Useful for: Different filters per sensor type
-//             Adaptive per-channel EQ
-//             Custom frequency response per channel
-```
-
-### Channel Priority Scheduling (Future Enhancement)
-```verilog
-// High-priority channels processed first
-// Useful for: Safety-critical channels
-//             Mixed-criticality systems
-//             QoS requirements
-```
-
-### Dynamic Channel Count (Future Enhancement)
-```verilog
-// Activate only needed channels
-// Useful for: Power optimization
-//             Flexible system configuration
-//             Hot-swap channel support
-```
-
----
-
-## Market Positioning
-
-### Competitive Advantage
-
-**vs Xilinx FIR Compiler:**
-- ✅ 70% lower power (zero DSP blocks)
-- ✅ 60% smaller area
-- ❌ Less flexible (optimized for specific use case)
-
-**vs Intel FIR MegaFunction:**
-- ✅ Native multi-channel time-mux (they only do parallel)
-- ✅ Much lower resource usage
-- ❌ Fewer configuration options
-
-**vs Custom Designs:**
-- ✅ AXI-Stream standard (easy integration)
-- ✅ Production-ready testbench
-- ✅ Well-documented
-
-### Target Markets
+## Target Markets
 
 1. **Consumer Audio** ($2B market)
    - Bluetooth speakers, headphones, soundbars
@@ -392,28 +266,6 @@ uint32_t get_sample_count(void) {
 
 ---
 
-## Certification Path
-
-### For Medical (FDA/CE)
-- ✅ Deterministic behavior (time-multiplexed is predictable)
-- ✅ Testbench with 100% coverage
-- ✅ Phase-matched filtering (critical for multi-lead ECG)
-- ✅ Per-channel overflow monitoring
-
-### For Automotive (ISO 26262)
-- ✅ Simple architecture (easier FMEA)
-- ✅ Per-channel fault isolation
-- ✅ Bypass mode for graceful degradation
-- ⚠️ Need: ECC on coefficient memory (future)
-
-### For Industrial (IEC 61508)
-- ✅ Configurable at runtime (no FPGA reprogram)
-- ✅ Status monitoring (overflow, busy)
-- ✅ Comprehensive diagnostics
-- ⚠️ Need: Built-in self-test (future)
-
----
-
 ## License
 
 MIT License - Free for commercial and academic use.
@@ -427,12 +279,3 @@ January 2026
 
 ---
 
-## Support
-
-For questions, integration support, or custom modifications:
-- Review testbench for usage examples
-- Check waveforms (gtkwave) for timing details
-- Modify N_CHANNELS parameter for 2/8/16 channels
-- Contact for commercial licensing and support
-
-**Your filter is now ready for commercial multi-channel applications!** 🎉
