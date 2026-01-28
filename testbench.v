@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 
-module tb_fir_16tap;
+module ntb_fir_16tap;
 
 parameter N            = 16;
-parameter DUT_LATENCY  = 9;    
-parameter REF_DELAY    = 7;    
+parameter DUT_LATENCY  = 9;    // DUT architectural pipeline stages  
+parameter REF_DELAY    = 7;    // Reference output pipeline depth 
 
 reg clk;
 reg rst;
@@ -12,14 +12,14 @@ reg enable;
 reg signed [15:0] x_in;
 wire signed [15:0] y_out;
 
-// VCD Dump 
+
 initial begin
     $dumpfile("dump.vcd");
-    $dumpvars(0, tb_fir_16tap);
+    $dumpvars(0, ntb_fir_16tap);
 end
 
-//DUT 
-fir_16tap dut (
+
+nfir_16tap dut (
     .clk(clk),
     .rst(rst),
     .enable(enable),
@@ -27,7 +27,7 @@ fir_16tap dut (
     .y_out(y_out)
 );
 
-// Clock 
+
 always #5 clk = ~clk;
 
 //Coefficients - Symmetric pattern
@@ -39,7 +39,7 @@ initial begin
     coeff[12]=512; coeff[13]=256; coeff[14]=128;  coeff[15]=64;
 end
 
-// Input Register with enable
+//Reference Input Register 
 reg signed [15:0] x_reg_ref;
 
 always @(posedge clk) begin
@@ -49,7 +49,7 @@ always @(posedge clk) begin
         x_reg_ref <= x_in;
 end
 
-// Shift Register 
+//Reference Shift Register 
 reg signed [15:0] x_hist [0:N-1];
 integer i;
 
@@ -64,7 +64,7 @@ always @(posedge clk) begin
     end
 end
 
-// Pure Combinational FIR Reference 
+//Combinational FIR Reference 
 reg signed [35:0] acc_ref;
 reg signed [15:0] y_ref;
 
@@ -83,7 +83,7 @@ always @(*) begin
         y_ref = (acc_ref + 36'sd16384) >>> 15;
 end
 
-// Output Pipeline 
+// Reference Output Pipeline 
 reg signed [15:0] y_ref_pipe [0:REF_DELAY-1];
 
 always @(posedge clk) begin
@@ -110,7 +110,7 @@ initial begin
     test_count = 0;
 end
 
-// Count samples processed
+// Count samples 
 always @(posedge clk) begin
     if (!rst && enable)
         sample_count <= sample_count + 1;
@@ -133,7 +133,7 @@ initial begin
     x_in = 0;
 
     #20 rst = 0;
-    $display("\n========== FIR FILTER VERIFICATION ==========");
+    $display("\n FIR FILTER VERIFICATION ");
     
     // Test 1: Impulse Response
     $display("\n[TEST 1] Impulse Response Test");
@@ -207,10 +207,10 @@ initial begin
     @(posedge clk);
     x_in = 16'sd10000;
     @(posedge clk);
-    enable = 0;  // Disable filter
+    enable = 0;  
     repeat (10) begin
         @(posedge clk);
-        x_in = $random;  
+        x_in = $random;  // Input changes but filter shouldn't process
     end
     enable = 1; 
     @(posedge clk);
@@ -225,18 +225,18 @@ initial begin
         x_in = 0;
     end
     
-    
+    // Print Statistics
     #100;
-    $display("\n========== TEST STATISTICS ==========");
-    $display("Total Tests Run:       %0d", test_count);
-    $display("Total Samples:         %0d", sample_count);
-    $display("Mismatches:            %0d", mismatch_count);
-    $display("Saturation Events:     %0d", saturation_count);
+    $display("\n TEST STATISTICS ");
+    $display("Total Tests Run: %0d", test_count);
+    $display("Total Samples: %0d", sample_count);
+    $display("Mismatches: %0d", mismatch_count);
+    $display("Saturation Events: %0d", saturation_count);
     if (mismatch_count == 0)
-        $display("\n✅ ALL TESTS PASSED!");
+        $display("\n ALL TESTS PASSED!");
     else
-        $display("\n❌ TESTS FAILED - %0d mismatches detected", mismatch_count);
-    $display("=========================================\n");
+        $display("\n TESTS FAILED - %0d mismatches detected", mismatch_count);
+    $display("==\n");
     
     #100 $finish;
 end
@@ -256,10 +256,10 @@ always @(posedge clk) begin
     if (!rst && check_delay >= DUT_LATENCY + 2) begin
         if (y_out !== y_ref_pipe[REF_DELAY-1]) begin
             mismatch_count <= mismatch_count + 1;
-            $display("❌ MISMATCH @ %0t | DUT=%d REF=%d",
+            $display(" MISMATCH @ %0t | DUT=%d REF=%d",
                      $time, y_out, y_ref_pipe[REF_DELAY-1]);
-        end else if (enable) begin  
-            $display("✅ OK @ %0t | y=%d", $time, y_out);
+        end else if (enable) begin  // Only display when processing
+            $display(" OK @ %0t | y=%d", $time, y_out);
         end
     end
 end
@@ -267,9 +267,9 @@ end
 // Assertions for runtime checking
 always @(posedge clk) begin
     if (!rst && enable) begin
-        
+       
         if (y_out > 16'sd32767 || y_out < -16'sd32768) begin
-            $display("⚠️  WARNING @ %0t: Output out of range: %d", $time, y_out);
+            $display("  WARNING @ %0t: Output out of range: %d", $time, y_out);
         end
     end
 end
