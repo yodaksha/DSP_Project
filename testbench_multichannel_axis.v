@@ -1,6 +1,6 @@
-`timescale 1ns/1ps
+`timescale 1ns/1ps //unit of time ,time resolution
 
-module tb_fir_multichannel_axis;
+module tb_fir_multichannel_axis; 
 
 parameter N_CHANNELS = 4;
 parameter N_TAPS = 32;
