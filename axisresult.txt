@@ -1,0 +1,728 @@
+VCD info: dumpfile fir_multichannel.vcd opened for output.
+
+
+  4-CHANNEL TIME-MULTIPLEXED FIR WITH AXI-STREAM
+
+Channels: 4
+Taps per channel: 32
+Data Width: 16 bits
+
+[TEST 1] Single Channel Operation (Ch0 Only)
+  Output: Ch0 =     32 @ t=165000
+  Output: Ch0 =     64 @ t=175000
+  Output: Ch0 =    128 @ t=185000
+  Output: Ch0 =    256 @ t=195000
+  Output: Ch0 =    512 @ t=205000
+  Output: Ch0 =   1024 @ t=215000
+  Output: Ch0 =   2048 @ t=225000
+  Output: Ch0 =   4096 @ t=235000
+  Output: Ch0 =   8192 @ t=245000
+  Output: Ch0 =   8192 @ t=255000
+  Output: Ch0 =   8192 @ t=265000
+  Output: Ch0 =   8192 @ t=275000
+  Output: Ch0 =   8192 @ t=285000
+  Output: Ch0 =   8192 @ t=295000
+  Output: Ch0 =   8192 @ t=305000
+  Output: Ch0 =   8192 @ t=315000
+  Output: Ch0 =   8192 @ t=325000
+  Output: Ch0 =   8192 @ t=335000
+  Output: Ch0 =   8192 @ t=345000
+  Ch0 outputs: 19
+
+[TEST 2] Channel Isolation Test
+  Each channel gets different impulse magnitude
+  Output: Ch0 =  16384 @ t=865000
+  Output: Ch0 =  16384 @ t=875000
+  Output: Ch2 =      4 @ t=885000
+  Output: Ch2 =      9 @ t=895000
+  Output: Ch0 =   8194 @ t=905000
+  Output: Ch0 =   4100 @ t=915000
+  Output: Ch2 =     18 @ t=925000
+  Output: Ch2 =     35 @ t=935000
+  Output: Ch0 =   2056 @ t=945000
+  Output: Ch0 =   1040 @ t=955000
+  Output: Ch2 =     70 @ t=965000
+  Output: Ch2 =    141 @ t=975000
+  Output: Ch0 =    543 @ t=985000
+  Output: Ch0 =    319 @ t=995000
+  Output: Ch2 =    281 @ t=1005000
+  Output: Ch2 =    563 @ t=1015000
+  Output: Ch0 =    253 @ t=1025000
+  Output: Ch0 =    314 @ t=1035000
+  Output: Ch2 =   1125 @ t=1045000
+  Output: Ch2 =   2250 @ t=1055000
+  Output: Ch0 =    532 @ t=1065000
+  Output: Ch0 =   1016 @ t=1075000
+  Output: Ch2 =   4500 @ t=1085000
+  Output: Ch2 =   6000 @ t=1095000
+  Output: Ch0 =   1008 @ t=1105000
+  Output: Ch0 =    500 @ t=1115000
+  Output: Ch2 =   4500 @ t=1125000
+  Output: Ch2 =   2250 @ t=1135000
+  Output: Ch0 =    250 @ t=1145000
+  Output: Ch0 =    125 @ t=1155000
+  Output: Ch2 =   1125 @ t=1165000
+  Output: Ch2 =    750 @ t=1175000
+  Output: Ch0 =    125 @ t=1185000
+  Output: Ch0 =    250 @ t=1195000
+  Output: Ch2 =   1125 @ t=1205000
+  Output: Ch2 =   2250 @ t=1215000
+  Output: Ch0 =    500 @ t=1225000
+  Output: Ch0 =   1000 @ t=1235000
+  Output: Ch2 =   4500 @ t=1245000
+  Output: Ch2 =   6000 @ t=1255000
+  Output: Ch0 =   1000 @ t=1265000
+  Output: Ch0 =    500 @ t=1275000
+  Output: Ch2 =   4500 @ t=1285000
+  Output: Ch2 =   2250 @ t=1295000
+  Output: Ch0 =    250 @ t=1305000
+  Output: Ch0 =    125 @ t=1315000
+  Output: Ch2 =   1125 @ t=1325000
+  Output: Ch2 =    563 @ t=1335000
+  Output: Ch0 =     63 @ t=1345000
+  Output: Ch0 =     31 @ t=1355000
+  Output: Ch2 =    281 @ t=1365000
+  Output: Ch2 =    141 @ t=1375000
+  Output: Ch0 =     16 @ t=1385000
+  Output: Ch0 =      8 @ t=1395000
+  Output: Ch2 =     70 @ t=1405000
+  Output: Ch2 =     35 @ t=1415000
+  Output: Ch0 =      4 @ t=1425000
+  Output: Ch0 =      2 @ t=1435000
+  Output: Ch2 =     18 @ t=1445000
+  Output: Ch2 =      9 @ t=1455000
+  Output: Ch0 =      1 @ t=1465000
+  Output: Ch0 =      0 @ t=1475000
+  Output: Ch2 =      4 @ t=1485000
+  Output: Ch2 =      1 @ t=1495000
+  Output: Ch0 =      0 @ t=1505000
+  Output: Ch0 =      0 @ t=1515000
+  Output: Ch2 =      0 @ t=1525000
+  Output: Ch2 =      0 @ t=1535000
+  Output: Ch0 =      0 @ t=1545000
+  Output: Ch0 =      0 @ t=1555000
+  Output: Ch2 =      0 @ t=1565000
+  Output: Ch2 =      0 @ t=1575000
+  Output: Ch0 =      0 @ t=1585000
+  Output: Ch0 =      0 @ t=1595000
+  Output: Ch2 =      0 @ t=1605000
+  Output: Ch2 =      0 @ t=1615000
+  Output: Ch0 =      0 @ t=1625000
+  Output: Ch0 =      0 @ t=1635000
+  Output: Ch2 =      0 @ t=1645000
+  Output: Ch2 =      0 @ t=1655000
+  Output: Ch0 =      0 @ t=1665000
+  Output: Ch0 =      0 @ t=1675000
+  Output: Ch2 =      0 @ t=1685000
+  Output: Ch2 =      0 @ t=1695000
+  Output: Ch0 =      0 @ t=1705000
+  Output: Ch0 =      0 @ t=1715000
+  Output: Ch2 =      0 @ t=1725000
+  Output: Ch2 =      0 @ t=1735000
+  Output: Ch0 =      0 @ t=1745000
+  Output: Ch0 =      0 @ t=1755000
+  Output: Ch2 =      0 @ t=1765000
+  Output: Ch2 =      0 @ t=1775000
+  Output: Ch0 =      0 @ t=1785000
+  Output: Ch0 =      0 @ t=1795000
+  Output: Ch2 =      0 @ t=1805000
+  Output: Ch2 =      0 @ t=1815000
+  Output: Ch0 =      0 @ t=1825000
+  Output: Ch0 =      0 @ t=1835000
+  Output: Ch2 =      0 @ t=1845000
+  Output: Ch2 =      0 @ t=1855000
+  Output: Ch0 =      0 @ t=1865000
+  Output: Ch0 =      0 @ t=1875000
+  Output: Ch2 =      0 @ t=1885000
+  Output: Ch2 =      0 @ t=1895000
+  Output: Ch0 =      0 @ t=1905000
+  Output: Ch0 =      0 @ t=1915000
+  Output: Ch2 =      0 @ t=1925000
+  Output: Ch2 =      0 @ t=1935000
+  Output: Ch0 =      0 @ t=1945000
+  Output: Ch0 =      0 @ t=1955000
+  Output: Ch2 =      0 @ t=1965000
+  Output: Ch2 =      0 @ t=1975000
+  Output: Ch0 =      0 @ t=1985000
+  Output: Ch0 =      0 @ t=1995000
+  Output: Ch2 =      0 @ t=2005000
+  Output: Ch2 =      0 @ t=2015000
+  Output: Ch0 =      0 @ t=2025000
+  Output: Ch0 =      0 @ t=2035000
+  Output: Ch2 =      0 @ t=2045000
+  Output: Ch2 =      0 @ t=2055000
+  Output: Ch0 =      0 @ t=2065000
+  Output: Ch0 =      0 @ t=2075000
+  Output: Ch2 =      0 @ t=2085000
+  Output: Ch2 =      0 @ t=2095000
+  Output: Ch0 =      0 @ t=2105000
+  Output: Ch0 =      0 @ t=2115000
+  Output: Ch2 =      0 @ t=2125000
+  Output: Ch2 =      0 @ t=2135000
+  Output: Ch0 =      0 @ t=2145000
+  Output: Ch0 =      0 @ t=2155000
+  Output: Ch2 =      0 @ t=2165000
+  Ch0 last output:      0 (should scale by filter)
+  Ch1 last output:      x (should be 2× Ch0)
+  Ch2 last output:      0 (should be 3× Ch0)
+  Ch3 last output:      x (should be 4× Ch0)
+
+[TEST 3] Stereo Audio (Ch0=Left, Ch1=Right)
+  Output: Ch2 =     34 @ t=2685000
+  Output: Ch0 =     73 @ t=2695000
+  Output: Ch0 =    151 @ t=2705000
+  Output: Ch0 =    308 @ t=2715000
+  Output: Ch0 =    620 @ t=2725000
+  Output: Ch0 =   1245 @ t=2735000
+  Output: Ch0 =   2495 @ t=2745000
+  Output: Ch0 =   4995 @ t=2755000
+  Output: Ch0 =   9995 @ t=2765000
+  Output: Ch0 =  19995 @ t=2775000
+  Output: Ch0 =  29995 @ t=2785000
+  Output: Ch0 =  32767 @ t=2795000
+  Output: Ch0 =  32767 @ t=2805000
+  Output: Ch0 =  32767 @ t=2815000
+  Output: Ch0 =  32767 @ t=2825000
+  Output: Ch0 =  32767 @ t=2835000
+  Output: Ch0 =  32767 @ t=2845000
+  Output: Ch0 =  32767 @ t=2855000
+  Output: Ch0 =  32767 @ t=2865000
+  Output: Ch0 =  32767 @ t=2875000
+  Output: Ch0 =  32767 @ t=2885000
+  Output: Ch0 =  32767 @ t=2895000
+  Output: Ch0 =  32767 @ t=2905000
+  Output: Ch0 =  32767 @ t=2915000
+  Output: Ch0 =  32767 @ t=2925000
+  Output: Ch0 =  32767 @ t=2935000
+  Output: Ch0 =  32767 @ t=2945000
+  Output: Ch0 =  32767 @ t=2955000
+  Output: Ch0 =  32767 @ t=2965000
+  Output: Ch0 =  32767 @ t=2975000
+  Output: Ch0 =  32767 @ t=2985000
+  Output: Ch0 =  32767 @ t=2995000
+  Output: Ch0 =  32767 @ t=3005000
+  Output: Ch0 =  32767 @ t=3015000
+  Output: Ch0 =  32767 @ t=3025000
+  Output: Ch0 =  32767 @ t=3035000
+  Output: Ch0 =  32767 @ t=3045000
+  Output: Ch0 =  32767 @ t=3055000
+  Output: Ch0 =  32767 @ t=3065000
+  Output: Ch0 =  32767 @ t=3075000
+  Output: Ch0 =  32767 @ t=3085000
+  Output: Ch0 =  32767 @ t=3095000
+  Output: Ch0 =  32767 @ t=3105000
+  Output: Ch0 =  32767 @ t=3115000
+  Output: Ch0 =  32767 @ t=3125000
+  Output: Ch0 =  32767 @ t=3135000
+  Output: Ch0 =  32767 @ t=3145000
+  Output: Ch0 =  32767 @ t=3155000
+  Output: Ch0 =  32767 @ t=3165000
+  Output: Ch0 =  32767 @ t=3175000
+  Output: Ch0 =  32767 @ t=3185000
+  Output: Ch0 =  32767 @ t=3195000
+  Output: Ch0 =  32767 @ t=3205000
+  Output: Ch0 =  32767 @ t=3215000
+  Output: Ch0 =  32767 @ t=3225000
+  Output: Ch0 =  32767 @ t=3235000
+  Output: Ch0 =  32767 @ t=3245000
+  Output: Ch0 =  32767 @ t=3255000
+  Output: Ch0 =  32767 @ t=3265000
+  Output: Ch0 =  32767 @ t=3275000
+  Output: Ch0 =  32767 @ t=3285000
+  Output: Ch0 =  32767 @ t=3295000
+  Output: Ch0 =  32767 @ t=3305000
+  Output: Ch0 =  32767 @ t=3315000
+  Output: Ch0 =  32767 @ t=3325000
+  Output: Ch0 =  32767 @ t=3335000
+  Output: Ch0 =  32767 @ t=3345000
+  Output: Ch0 =  32767 @ t=3355000
+  Output: Ch0 =  32767 @ t=3365000
+  Output: Ch0 =  32767 @ t=3375000
+  Output: Ch0 =  32767 @ t=3385000
+  Output: Ch0 =  32767 @ t=3395000
+  Output: Ch0 =  32767 @ t=3405000
+  Output: Ch0 =  32767 @ t=3415000
+  Output: Ch0 =  32767 @ t=3425000
+  Output: Ch0 =  32767 @ t=3435000
+  Output: Ch0 =  32767 @ t=3445000
+  Output: Ch0 =  32767 @ t=3455000
+  Output: Ch0 =  32767 @ t=3465000
+  Output: Ch0 =  32767 @ t=3475000
+  Output: Ch0 =  32767 @ t=3485000
+  Output: Ch0 =  32767 @ t=3495000
+  Output: Ch0 =  32767 @ t=3505000
+  Output: Ch0 =  32767 @ t=3515000
+  Output: Ch0 =  32767 @ t=3525000
+  Output: Ch0 =  32767 @ t=3535000
+  Output: Ch0 =  32767 @ t=3545000
+  Output: Ch0 =  32767 @ t=3555000
+  Output: Ch0 =  32767 @ t=3565000
+  Output: Ch0 =  32767 @ t=3575000
+  Output: Ch0 =  32767 @ t=3585000
+  Output: Ch0 =  32767 @ t=3595000
+  Output: Ch0 =  32767 @ t=3605000
+  Output: Ch0 =  32767 @ t=3615000
+  Output: Ch0 =  32767 @ t=3625000
+  Output: Ch0 =  32767 @ t=3635000
+  Output: Ch0 =  32767 @ t=3645000
+  Output: Ch0 =  32767 @ t=3655000
+  Output: Ch0 =  32767 @ t=3665000
+  Left (Ch0) samples: 183
+  Right (Ch1) samples: 0
+
+[TEST 4] Quad Sensor Array (4 Vibration Sensors)
+  Output: Ch0 =  32767 @ t=4185000
+  Output: Ch0 =  32767 @ t=4195000
+  Output: Ch2 =     -6 @ t=4205000
+  Output: Ch2 =    -15 @ t=4215000
+  Output: Ch0 =  32767 @ t=4225000
+  Output: Ch0 =  32767 @ t=4235000
+  Output: Ch2 =    -32 @ t=4245000
+  Output: Ch2 =    -64 @ t=4255000
+  Output: Ch0 =  32767 @ t=4265000
+  Output: Ch0 =  32767 @ t=4275000
+  Output: Ch2 =   -127 @ t=4285000
+  Output: Ch2 =   -253 @ t=4295000
+  Output: Ch0 =  32767 @ t=4305000
+  Output: Ch0 =  32767 @ t=4315000
+  Output: Ch2 =   -506 @ t=4325000
+  Output: Ch2 =  -1009 @ t=4335000
+  Output: Ch0 =  32767 @ t=4345000
+  Output: Ch0 =  32767 @ t=4355000
+  Output: Ch2 =  -2016 @ t=4365000
+  Output: Ch2 =  -4031 @ t=4375000
+  Output: Ch0 =  32767 @ t=4385000
+  Output: Ch0 =  32767 @ t=4395000
+  Output: Ch2 =  -8062 @ t=4405000
+  Output: Ch2 = -11884 @ t=4415000
+  Output: Ch0 =  32767 @ t=4425000
+  Output: Ch0 =  32767 @ t=4435000
+  Output: Ch2 = -13169 @ t=4445000
+  Output: Ch2 = -11830 @ t=4455000
+  Output: Ch0 =  32767 @ t=4465000
+  Output: Ch0 =  32767 @ t=4475000
+  Output: Ch2 =  -6465 @ t=4485000
+  Output: Ch2 =   -944 @ t=4495000
+  Output: Ch0 =  32767 @ t=4505000
+  Output: Ch0 =  32767 @ t=4515000
+  Output: Ch2 =    939 @ t=4525000
+  Output: Ch2 =   1109 @ t=4535000
+  Output: Ch0 =  32767 @ t=4545000
+  Output: Ch0 =  28666 @ t=4555000
+  Output: Ch2 =    634 @ t=4565000
+  Output: Ch2 =   -688 @ t=4575000
+  Output: Ch0 =  19462 @ t=4585000
+  Output: Ch0 =  13861 @ t=4595000
+  Output: Ch2 =  -3480 @ t=4605000
+  Output: Ch2 =  -4572 @ t=4615000
+  Output: Ch0 =  11813 @ t=4625000
+  Output: Ch0 =  10743 @ t=4635000
+  Output: Ch2 =     56 @ t=4645000
+  Output: Ch2 =   4819 @ t=4655000
+  Output: Ch0 =   8569 @ t=4665000
+  Output: Ch0 =   5351 @ t=4675000
+  Output: Ch2 =   4200 @ t=4685000
+  Output: Ch2 =   3331 @ t=4695000
+  Output: Ch0 =    625 @ t=4705000
+  Output: Ch0 =  -4420 @ t=4715000
+  Output: Ch2 =   7218 @ t=4725000
+  Output: Ch2 =  11043 @ t=4735000
+  Output: Ch0 =  -8754 @ t=4745000
+  Output: Ch0 =  -9670 @ t=4755000
+  Output: Ch2 =   9952 @ t=4765000
+  Output: Ch2 =   7755 @ t=4775000
+  Output: Ch0 =  -2752 @ t=4785000
+  Output: Ch0 =   4815 @ t=4795000
+  Output: Ch2 =   7711 @ t=4805000
+  Output: Ch2 =   7969 @ t=4815000
+  Output: Ch0 =   6171 @ t=4825000
+  Output: Ch0 =   4318 @ t=4835000
+  Output: Ch2 =   6823 @ t=4845000
+  Output: Ch2 =   6006 @ t=4855000
+  Output: Ch0 =    662 @ t=4865000
+  Output: Ch0 =  -2569 @ t=4875000
+  Output: Ch2 =   7414 @ t=4885000
+  Output: Ch2 =   9109 @ t=4895000
+  Output: Ch0 =  -2944 @ t=4905000
+  Output: Ch0 =   -153 @ t=4915000
+  Output: Ch2 =   9300 @ t=4925000
+  Output: Ch2 =   9039 @ t=4935000
+  Output: Ch0 =   7693 @ t=4945000
+  Output: Ch0 =  14142 @ t=4955000
+  Output: Ch2 =   9156 @ t=4965000
+  Output: Ch2 =   8567 @ t=4975000
+  Output: Ch0 =  12046 @ t=4985000
+  Output: Ch0 =   7831 @ t=4995000
+  Output: Ch2 =   5839 @ t=5005000
+  Output: Ch2 =   3722 @ t=5015000
+  Output: Ch0 =   6866 @ t=5025000
+  Output: Ch0 =   6901 @ t=5035000
+  Output: Ch2 =   5263 @ t=5045000
+  Output: Ch2 =   8453 @ t=5055000
+  Output: Ch0 =   6193 @ t=5065000
+  Output: Ch0 =   6862 @ t=5075000
+  Output: Ch2 =  12108 @ t=5085000
+  Output: Ch2 =  15166 @ t=5095000
+  Output: Ch0 =  11716 @ t=5105000
+  Output: Ch0 =  15314 @ t=5115000
+  Output: Ch2 =  16258 @ t=5125000
+  Output: Ch2 =  13877 @ t=5135000
+  Output: Ch0 =  11591 @ t=5145000
+  Output: Ch0 =   6242 @ t=5155000
+  Output: Ch2 =   4776 @ t=5165000
+  Output: Ch2 =  -4388 @ t=5175000
+  Output: Ch0 =   4142 @ t=5185000
+  Output: Ch0 =   2577 @ t=5195000
+  Output: Ch2 =  -6985 @ t=5205000
+  Output: Ch2 =  -5351 @ t=5215000
+  Output: Ch0 =   -897 @ t=5225000
+  Output: Ch0 =  -2929 @ t=5235000
+  Output: Ch2 =    295 @ t=5245000
+  Output: Ch2 =   6128 @ t=5255000
+  Output: Ch0 =    549 @ t=5265000
+  Output: Ch0 =    549 @ t=5275000
+  Output: Ch2 =    549 @ t=5285000
+  Output: Ch2 =    549 @ t=5295000
+  Output: Ch0 =    549 @ t=5305000
+  Output: Ch0 =    549 @ t=5315000
+  Output: Ch2 =    549 @ t=5325000
+  Output: Ch2 =    549 @ t=5335000
+  Output: Ch0 =    549 @ t=5345000
+  Output: Ch0 =    549 @ t=5355000
+  Output: Ch2 =    549 @ t=5365000
+  All 4 sensor channels processed
+  Total samples: 368
+
+[TEST 5] Round-Robin Channel Scheduling
+  Output: Ch2 =   9974 @ t=5885000
+  Output: Ch0 =  10551 @ t=5895000
+  Output: Ch2 =   2331 @ t=5905000
+  Output: Ch2 =   -303 @ t=5915000
+  Output: Ch0 =  11446 @ t=5925000
+  Output: Ch0 =  11536 @ t=5935000
+  Output: Ch2 =  -3893 @ t=5945000
+  Output: Ch2 =  -5308 @ t=5955000
+  Output: Ch0 =  12274 @ t=5965000
+  Output: Ch0 =  15435 @ t=5975000
+  Output: Ch2 =   -332 @ t=5985000
+  Output: Ch2 =   5708 @ t=5995000
+  Output: Ch0 =  17454 @ t=6005000
+  Output: Ch0 =  14190 @ t=6015000
+  Output: Ch2 =   8014 @ t=6025000
+  Output: Ch2 =   7649 @ t=6035000
+  Output: Ch0 =  11454 @ t=6045000
+  Output: Ch0 =  15328 @ t=6055000
+  Output: Ch2 =   4343 @ t=6065000
+  Output: Ch2 =   2729 @ t=6075000
+  Output: Ch0 =  22658 @ t=6085000
+  Output: Ch0 =  32013 @ t=6095000
+  Output: Ch2 =   8282 @ t=6105000
+  Output: Ch2 =  16747 @ t=6115000
+  Output: Ch0 =  32767 @ t=6125000
+  Output: Ch0 =  32767 @ t=6135000
+  Output: Ch2 =  25327 @ t=6145000
+  Output: Ch2 =  31402 @ t=6155000
+  Output: Ch0 =  32767 @ t=6165000
+  Output: Ch0 =  32767 @ t=6175000
+  Output: Ch2 =  32767 @ t=6185000
+  Output: Ch2 =  32767 @ t=6195000
+  Output: Ch0 =  32767 @ t=6205000
+  Output: Ch0 =  32767 @ t=6215000
+  Output: Ch2 =  32767 @ t=6225000
+  Output: Ch2 =  32767 @ t=6235000
+  Output: Ch0 =  32767 @ t=6245000
+  Output: Ch0 =  32767 @ t=6255000
+  Output: Ch2 =  32767 @ t=6265000
+  Ch0 count: 19
+  Ch1 count: 0
+  Ch2 count: 20
+  Ch3 count: 0
+  ⚠ Unequal distribution
+
+[TEST 6] Backpressure with Multi-Channel
+  Output: Ch2 =  32561 @ t=6785000
+  Output: Ch0 =  32561 @ t=6795000
+  Output: Ch0 =  32561 @ t=6805000
+  Output: Ch0 =  32561 @ t=6815000
+
+[TEST 7] Per-Channel Frame Boundaries (TLAST)
+  Output: Ch0 =  32767 @ t=7135000
+  Output: Ch0 =  32767 @ t=7145000
+  Output: Ch0 =  32767 @ t=7155000
+  Output: Ch0 =  32767 @ t=7165000
+  Output: Ch0 =  32767 @ t=7175000
+  Output: Ch0 =  32767 @ t=7185000
+  Output: Ch0 =  32767 @ t=7195000
+  Output: Ch0 =  32767 @ t=7205000
+  Output: Ch0 =  32767 @ t=7215000
+  Output: Ch0 =  32767 @ t=7225000
+  Output: Ch0 =  32767 @ t=7235000
+  Output: Ch0 =  32767 @ t=7245000
+  Output: Ch0 =  30812 @ t=7255000
+  Output: Ch0 =      0 @ t=7265000
+  Output: Ch0 =      0 @ t=7275000
+  Output: Ch0 =      0 @ t=7285000
+  Output: Ch0 =      1 @ t=7295000
+  Output: Ch1 =      2 @ t=7305000
+  Output: Ch1 =      5 @ t=7315000
+  Output: Ch1 =     10 @ t=7325000
+  Output: Ch1 =     20 @ t=7335000
+  Output: Ch1 =     20 @ t=7345000
+  Output: Ch1 =     20 @ t=7355000
+  Output: Ch1 =     20 @ t=7365000
+  Output: Ch1 =     20 @ t=7375000
+  Output: Ch1 =     20 @ t=7385000
+  Output: Ch1 =     20 @ t=7395000
+  Output: Ch1 =     20 @ t=7405000
+  Output: Ch1 =     20 @ t=7415000
+  Output: Ch1 =     20 @ t=7425000
+  Output: Ch1 =     20 @ t=7435000
+
+[TEST 8] Mixed Rate Channels
+  Ch0: High rate (10 samples)
+  Ch1: Low rate (5 samples)
+  Output: Ch1 =  18682 @ t=7955000
+  Output: Ch0 =  13822 @ t=7965000
+  Output: Ch0 =   9225 @ t=7975000
+  Output: Ch0 =   7305 @ t=7985000
+  Output: Ch0 =   7305 @ t=7995000
+  Output: Ch0 =   7305 @ t=8005000
+  Output: Ch0 =   7305 @ t=8015000
+  Output: Ch0 =   7305 @ t=8025000
+  Output: Ch0 =   7305 @ t=8035000
+  Output: Ch0 =   7305 @ t=8045000
+  Output: Ch0 =   7305 @ t=8055000
+  Output: Ch1 =   7305 @ t=8065000
+  Output: Ch1 =   7305 @ t=8075000
+  Output: Ch1 =   7305 @ t=8085000
+  Independent rate handling successful
+
+[TEST 9] Runtime Coefficient Reconfiguration
+  Coefficients updated
+  Output: Ch1 =   5866 @ t=8775000
+  Output: Ch0 =   5829 @ t=8785000
+  Output: Ch0 =   6115 @ t=8795000
+  Output: Ch0 =   6285 @ t=8805000
+  Output: Ch0 =   6686 @ t=8815000
+  Output: Ch0 =   6891 @ t=8825000
+  Output: Ch0 =   7294 @ t=8835000
+  Output: Ch0 =   4394 @ t=8845000
+  Output: Ch0 =   5272 @ t=8855000
+  Output: Ch0 =   6077 @ t=8865000
+  Output: Ch0 =   7031 @ t=8875000
+  Output: Ch1 =   8033 @ t=8885000
+  Output: Ch1 =   9006 @ t=8895000
+  Output: Ch1 =   9857 @ t=8905000
+  Output: Ch1 =  10435 @ t=8915000
+  Output: Ch1 =  10451 @ t=8925000
+  Output: Ch1 =  11317 @ t=8935000
+  Output: Ch1 =  27382 @ t=8945000
+  Output: Ch1 =  32767 @ t=8955000
+  Output: Ch1 =  32767 @ t=8965000
+  Output: Ch1 =  32767 @ t=8975000
+  Output: Ch2 =  32767 @ t=8985000
+  Output: Ch2 =  32767 @ t=8995000
+  Output: Ch2 =  32767 @ t=9005000
+  Output: Ch2 =  32767 @ t=9015000
+  Output: Ch2 =  32767 @ t=9025000
+  Output: Ch2 =  32767 @ t=9035000
+  Output: Ch2 =      0 @ t=9045000
+  Output: Ch2 =      2 @ t=9055000
+  Output: Ch2 =      2 @ t=9065000
+  Output: Ch2 =      2 @ t=9075000
+  Output: Ch3 =      2 @ t=9085000
+  Output: Ch3 =      2 @ t=9095000
+  Output: Ch3 =      2 @ t=9105000
+  Output: Ch3 =      2 @ t=9115000
+  Output: Ch3 =      2 @ t=9125000
+  Output: Ch3 =      2 @ t=9135000
+  Output: Ch3 =      2 @ t=9145000
+  Output: Ch3 =      2 @ t=9155000
+  All channels tested with new coefficients
+
+[TEST 10] Per-Channel Overflow Detection
+  Output: Ch3 =   7289 @ t=9845000
+  Output: Ch0 =   8895 @ t=9855000
+  Output: Ch0 =   9866 @ t=9865000
+  Output: Ch0 =  10687 @ t=9875000
+  Output: Ch0 =  11963 @ t=9885000
+  Output: Ch0 =  14526 @ t=9895000
+  Output: Ch0 =  19656 @ t=9905000
+  Output: Ch0 =  26871 @ t=9915000
+  Output: Ch0 =  32767 @ t=9925000
+  Output: Ch0 =  32767 @ t=9935000
+  Output: Ch0 =  32767 @ t=9945000
+  Output: Ch0 =  32767 @ t=9955000
+  Output: Ch0 =  32767 @ t=9965000
+  Output: Ch0 =  32767 @ t=9975000
+  Output: Ch0 =  32767 @ t=9985000
+  Output: Ch0 =  32767 @ t=9995000
+  Output: Ch0 =  32767 @ t=10005000
+  Output: Ch0 =  32767 @ t=10015000
+  Output: Ch0 =  32767 @ t=10025000
+  Output: Ch0 =  32767 @ t=10035000
+  Output: Ch0 =  32767 @ t=10045000
+  Output: Ch0 =  32767 @ t=10055000
+  Output: Ch0 =  32767 @ t=10065000
+  Output: Ch0 =  32767 @ t=10075000
+  Output: Ch0 =  32767 @ t=10085000
+  Output: Ch0 =  32767 @ t=10095000
+  Output: Ch0 =  32767 @ t=10105000
+  Output: Ch0 =  32767 @ t=10115000
+  Output: Ch0 =  32767 @ t=10125000
+  Output: Ch0 =  32767 @ t=10135000
+  Output: Ch0 =  32767 @ t=10145000
+  Output: Ch0 =  32767 @ t=10155000
+  Output: Ch0 =  32767 @ t=10165000
+  Output: Ch0 =  32767 @ t=10175000
+  Output: Ch0 =  32767 @ t=10185000
+  Output: Ch0 =  32767 @ t=10195000
+  Output: Ch0 =  32767 @ t=10205000
+  Output: Ch0 =  32767 @ t=10215000
+  Output: Ch0 =  32767 @ t=10225000
+  Output: Ch0 =  32767 @ t=10235000
+  Output: Ch0 =  32767 @ t=10245000
+  Output: Ch0 =  32767 @ t=10255000
+  Output: Ch0 =  32767 @ t=10265000
+  Output: Ch0 =  32767 @ t=10275000
+  Output: Ch0 =  32767 @ t=10285000
+  Output: Ch0 =  32767 @ t=10295000
+  Output: Ch0 =  32767 @ t=10305000
+  Output: Ch0 =  32767 @ t=10315000
+  Output: Ch0 =  32767 @ t=10325000
+  Output: Ch0 =  32767 @ t=10335000
+  Output: Ch0 =  32767 @ t=10345000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10355000
+  Output: Ch0 =  32767 @ t=10365000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10375000
+  Output: Ch0 =  32767 @ t=10385000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10395000
+  Output: Ch0 =  32767 @ t=10405000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10415000
+  Output: Ch0 =  32767 @ t=10425000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10435000
+  Output: Ch0 =  32767 @ t=10445000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  Output: Ch0 =  32767 @ t=10455000
+  Output: Ch0 =  32767 @ t=10465000
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+  ✓ Overflow detected on Ch0
+  ✓ Overflow detected on Ch2
+
+
+  MULTI-CHANNEL TEST SUMMARY
+
+Total Samples Processed: 558
+Tests Completed: 10
+
+ Single channel operation verified
+ Channel isolation verified
+ Stereo audio simulation verified
+ Quad sensor array verified
+ Round-robin scheduling verified
+ Backpressure handling verified
+ Per-channel TLAST verified
+ Mixed rate channels verified
+ Runtime coefficient update verified
+ Per-channel overflow detection verified
+
+ALL MULTI-CHANNEL TESTS PASSED!
+
+
+tb_fir_multichannel_axis.v:455: $finish called at 10945000 (1ps)
